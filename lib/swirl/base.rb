@@ -43,7 +43,7 @@ module Swirl
       when 200
         compact(data)
       when 400...500
-        exception_class = Swirl.const_get(data["ErrorResponse"]["Error"]["Code"]) || InvalidRequest
+        exception_class = Swirl.const_get(data["ErrorResponse"]["Error"]["Code"]) rescue InvalidRequest
         raise exception_class, data["ErrorResponse"]["Error"]["Message"]
       else
         msg = "unexpected response #{code} -> #{data.inspect}"
