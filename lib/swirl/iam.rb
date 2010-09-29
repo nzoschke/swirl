@@ -2,6 +2,8 @@ require 'swirl/helpers'
 
 module Swirl
   class EntityAlreadyExists < StandardError ; end
+  class NoSuchEntity < StandardError ; end
+  class LimitExceeded < StandardError ; end
 
   class IAM < Base
     include Helpers::Compactor
